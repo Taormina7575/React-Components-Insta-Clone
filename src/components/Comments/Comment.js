@@ -1,18 +1,17 @@
 // You do not need to change this file.
 import React from 'react';
 
-const Comment = props => {
+export default function Comment({curComment}) {
   // 🔥 Make sure the parent of Comment is passing the right props!
-  const { comment } = props;
 
   return (
     <div className='comment-text'>
-      <span className='user'>{comment.username}</span>
+      <span className='user'>{curComment.username}</span>
       {' '}
-      <span className='comment'>{comment.text}</span>
+      <span className='comment'>{curComment.text}</span>
     </div>
   );
 };
 
 
-export default Comment;
+

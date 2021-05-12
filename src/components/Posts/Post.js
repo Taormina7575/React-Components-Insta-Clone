@@ -3,29 +3,27 @@ import Comments from '../Comments/Comments';
 import LikeSection from './LikeSection';
 import PostHeader from './PostHeader';
 
-const Post = props => {
+export default function Post({curPersonData, likeFunction}){
   // 🔥 Make sure the parent of Post is passing the right props!
-  const { post, likePost } = props;
-
   return (
     <div className='post-border'>
       <PostHeader
-        username={post.username}
-        thumbnailUrl={post.thumbnailUrl}
+        username={curPersonData.username}
+        thumbnailUrl={curPersonData.thumbnailUrl}
       />
       <div className='post-image-wrapper'>
         <img
           alt='post thumbnail'
           className='post-image'
-          src={post.imageUrl}
+          src={curPersonData.imageUrl}
         />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
-      <LikeSection likePost={() => likePost(post.id)} />
+      <LikeSection likePost={() => likeFunction(curPersonData.id)} likeNumb={curPersonData.likes}/>
       {/* Comments also wants its props! */}
-      <Comments />
+      <Comments personComments={curPersonData.comments}/>
     </div>
   );
 };
 
-export default Post;
+
